@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView ivPostImage;
     private Button btnSubmit;
     private Button btnLogout;
+    private Button btnFeed;
     private File photoFile;
 
 
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         ivPostImage = findViewById(R.id.ivPostImage);
         btnSubmit = findViewById(R.id.btnSubmit);
         btnLogout = findViewById(R.id.btnLogout);
+        btnFeed = findViewById(R.id.btnFeed);
 
 
         if (savedInstanceState != null && savedInstanceState.getInt(String.valueOf(ON_RESUME_KEY)) == 1) {
@@ -123,6 +125,14 @@ public class MainActivity extends AppCompatActivity {
                 
                 
 
+            }
+        });
+
+        btnFeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, FeedActivity.class);
+                startActivity(intent);
             }
         });
 
