@@ -90,7 +90,7 @@ public class FeedActivity extends AppCompatActivity {
         adapter.clear();
         queryPosts();
         swipeContainer.setRefreshing(false);
-        offset = 0; 
+        offset = 0;
     }
 
 
@@ -136,7 +136,7 @@ public class FeedActivity extends AppCompatActivity {
         });
     }
 
-    private void getNextPage(int offset) {
+    protected void getNextPage(int offset) {
         // specify what type of data we want to query - Post.class
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         // include data referred by user key
