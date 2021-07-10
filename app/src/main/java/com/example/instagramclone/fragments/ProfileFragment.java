@@ -52,7 +52,7 @@ public class ProfileFragment extends BasePostsFragment {
             }
         });
 
-        final GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
+        final GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 3);
 
         super.onViewCreated(view, savedInstanceState);
 
