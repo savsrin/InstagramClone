@@ -34,6 +34,7 @@ abstract public class BasePostsFragment extends Fragment {
         }
         // limit query to latest 20 items
         query.setLimit(20);
+        // get page specified by skipping offset items
         query.setSkip(offset);
         // order posts by creation date (newest first)
         query.addDescendingOrder("createdAt");

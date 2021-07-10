@@ -2,6 +2,7 @@ package com.example.instagramclone;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,16 +22,24 @@ import java.util.List;
 public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> {
     private Context context;
     private List<Post> posts;
+    private Boolean isSquare;
 
-    public PostsAdapter(Context context, List<Post> posts) {
+    public PostsAdapter(Context context, List<Post> posts, Boolean isSquare) {
         this.context = context;
         this.posts = posts;
+        this.isSquare = isSquare;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_post, parent, false);
+        View view;
+        if (!this.isSquare) {
+            view = LayoutInflater.from(context).inflate(R.layout.item_post, parent, false);
+        } else {
+            view = LayoutInflater.from(context).inflate(R.layout.item_post_square, parent, false);
+
+        }
         return new ViewHolder(view);
     }
 
@@ -62,6 +71,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private TextView tvUsername;
         private ImageView ivImage;
         private TextView tvDescription;
+
 
 
         public ViewHolder(@NonNull View itemView) {

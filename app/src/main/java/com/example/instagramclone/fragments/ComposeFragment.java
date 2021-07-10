@@ -127,6 +127,7 @@ public class ComposeFragment extends Fragment {
                 //BitmapFactory.decodeFile(photoFile.getAbsolutePath());
                 // RESIZE BITMAP, see section below
                 Bitmap resizedBitmap = BitmapScaler.scaleToFitWidth(takenImage, 500);
+                resizedBitmap = cropSquare(resizedBitmap);
                 // Configure byte output stream
                 ByteArrayOutputStream bytes = new ByteArrayOutputStream();
                 // Compress the image further
@@ -151,6 +152,12 @@ public class ComposeFragment extends Fragment {
                 Toast.makeText(getContext(), "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    private Bitmap cropSquare(Bitmap bitmap) {
+        // Tutorial: https://stackoverflow.com/questions/6908604/android-crop-center-of-bitmap
+        int minLength = Math.min(bitmap.getHeight(), bitmap.getWidth());
+        return Bitmap.createBitmap(bitmap, 0, 0, minLength, minLength);
     }
 
 

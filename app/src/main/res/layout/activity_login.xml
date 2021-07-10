@@ -10,6 +10,13 @@
     tools:context=".LoginActivity">
 
 
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/nav_logo_whiteout"
+        />
+
 
     <EditText
         android:id="@+id/etUsername"
@@ -33,6 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:backgroundTint="#2196F3"
         android:text="@string/login" />
 
     <Button
@@ -40,6 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:backgroundTint="#4CAF50"
         android:text="@string/signup" />
 
 

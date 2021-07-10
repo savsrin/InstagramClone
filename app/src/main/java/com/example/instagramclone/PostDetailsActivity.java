@@ -21,13 +21,11 @@ public class PostDetailsActivity extends AppCompatActivity {
     private Post post;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityPostDetailsBinding binding = ActivityPostDetailsBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
-        //setContentView(R.layout.activity_post_details);
         setContentView(view);
         post = (Post) Parcels.unwrap(getIntent().getParcelableExtra(Post.class.getSimpleName()));
         binding.tvDescriptionDet.setText(post.getDescription());

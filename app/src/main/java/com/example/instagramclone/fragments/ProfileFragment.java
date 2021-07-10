@@ -54,22 +54,17 @@ public class ProfileFragment extends BasePostsFragment {
 
         final GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
 
-
-
-
         super.onViewCreated(view, savedInstanceState);
 
         offset = 0;
 
         // initialize the array that will hold posts and create a PostsAdapter
         allPosts = new ArrayList<>();
-        adapter = new PostsAdapter(getContext(), allPosts);
+        adapter = new PostsAdapter(getContext(), allPosts, true);
 
         // set the adapter on the recycler view
         binding.rvProfile.setAdapter(adapter);
         // set the layout manager on the recycler view
-
-
         binding.rvProfile.setLayoutManager(layoutManager);
 
         // Lookup the swipe container view
@@ -78,9 +73,6 @@ public class ProfileFragment extends BasePostsFragment {
         binding.swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                // Your code to refresh the list here.
-                // Make sure you call swipeContainer.setRefreshing(false)
-                // once the network request has completed successfully.
                 fetchTimelineAsync(0);
             }
         });
@@ -98,7 +90,6 @@ public class ProfileFragment extends BasePostsFragment {
                 // Triggered only when new data needs to be appended to the list
                 // Add whatever code is needed to append new items to the bottom of the list
                 Log.i(TAG, "onLoadMore called");
-                //offset += 20;
                 queryPosts(adapter.getItemCount() );
             }
         };
@@ -125,7 +116,6 @@ public class ProfileFragment extends BasePostsFragment {
         // `client` here is an instance of Android Async HTTP
         // getHomeTimeline is an example endpoint.
         adapter.clear();
-        //offset = 0;
         queryPosts(0);
         binding.swipeContainer.setRefreshing(false);
         scrollListener.resetState();
@@ -138,40 +128,6 @@ public class ProfileFragment extends BasePostsFragment {
         getActivity().finish();
     }
 
-//    @Override
-//    protected void queryPosts() {
-//        // specify what type of data we want to query - Post.class
-//        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
-//        // include data referred by user key
-//        query.include(Post.KEY_USER);
-//        // limit posts shown to only that of current user
-//        query.whereEqualTo(Post.KEY_USER, ParseUser.getCurrentUser());
-//        // limit query to latest 20 items
-//        query.setLimit(20);
-//        // order posts by creation date (newest first)
-//        query.addDescendingOrder("createdAt");
-//        // start an asynchronous call for posts
-//        query.findInBackground(new FindCallback<Post>() {
-//            @Override
-//            public void done(List<Post> posts, ParseException e) {
-//                // check for errors
-//                if (e != null) {
-//                    Log.e(TAG, "Issue with getting posts", e);
-//                    return;
-//                }
-//
-//                // for debugging purposes let's print every post description to logcat
-//                for (Post post : posts) {
-//                    Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
-//                }
-//
-//                // save received posts to list and notify adapter of new data
-//                allPosts.addAll(posts);
-//                adapter.notifyDataSetChanged();
-//            }
-//        });
-//    }
-//
 
     protected void getNextPage(int offset) {
         // specify what type of data we want to query - Post.class

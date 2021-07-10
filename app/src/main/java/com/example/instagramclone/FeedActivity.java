@@ -36,7 +36,7 @@ public class FeedActivity extends AppCompatActivity {
 
         // initialize the array that will hold posts and create a PostsAdapter
         allPosts = new ArrayList<>();
-        adapter = new PostsAdapter(this, allPosts);
+        adapter = new PostsAdapter(this, allPosts, false);
 
         // set the adapter on the recycler view
         rvPosts.setAdapter(adapter);
