@@ -55,8 +55,6 @@ public class ComposeFragment extends Fragment {
         // Required empty public constructor
     }
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -64,8 +62,6 @@ public class ComposeFragment extends Fragment {
         binding = FragmentComposeBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         return view;
-
-        //return inflater.inflate(R.layout.fragment_compose, container, false);
     }
 
     @Override
@@ -75,8 +71,6 @@ public class ComposeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 launchCamera();
-
-
             }
         });
 
@@ -97,8 +91,6 @@ public class ComposeFragment extends Fragment {
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 savePost(description, currentUser, photoFile);
-
-
 
             }
         });
@@ -123,7 +115,6 @@ public class ComposeFragment extends Fragment {
                 // by this point we have the camera photo on disk
                 photoFile = getPhotoFileUri(photoFileName);
                 Bitmap takenImage = rotateBitmapOrientation(photoFile.getAbsolutePath());
-
                 //BitmapFactory.decodeFile(photoFile.getAbsolutePath());
                 // RESIZE BITMAP, see section below
                 Bitmap resizedBitmap = BitmapScaler.scaleToFitWidth(takenImage, 500);
